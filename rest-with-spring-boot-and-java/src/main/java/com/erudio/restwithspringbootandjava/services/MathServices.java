@@ -1,14 +1,9 @@
-package com.erudio.restwithspringbootandjava.service;
+package com.erudio.restwithspringbootandjava.services;
 
-import com.erudio.restwithspringbootandjava.exceptions.UnsupportedMathOperationException;
-import com.erudio.restwithspringbootandjava.utils.NumberConverter;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Service
-public class MathService {
+public class MathServices {
 
     public Double sum(Double numberOne, Double numberTwo) {
         return numberOne + numberTwo;

@@ -1,7 +1,7 @@
 package com.erudio.restwithspringbootandjava.controller;
 
 import com.erudio.restwithspringbootandjava.exceptions.UnsupportedMathOperationException;
-import com.erudio.restwithspringbootandjava.service.MathService;
+import com.erudio.restwithspringbootandjava.services.MathServices;
 import com.erudio.restwithspringbootandjava.utils.NumberConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class MathController {
 
     @Autowired
-    MathService mathService;
+    MathServices mathServices;
 
     @GetMapping("/sum/{numberOne}/{numberTwo}")
     public Double sum(
@@ -20,7 +20,7 @@ public class MathController {
         if (!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please set a numeric value");
         }
-        return mathService.sum(
+        return mathServices.sum(
                 NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
     }
 
@@ -33,7 +33,7 @@ public class MathController {
             throw new UnsupportedMathOperationException("Please set a numeric value!");
         }
 
-        return mathService.subtraction(
+        return mathServices.subtraction(
                 NumberConverter.convertToDouble(numberOne),NumberConverter.convertToDouble(numberTwo));
     }
 
@@ -46,7 +46,7 @@ public class MathController {
             throw new UnsupportedMathOperationException("Please set a numeric value!");
         }
 
-        return mathService.multiplication(
+        return mathServices.multiplication(
                 NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
     }
 
@@ -59,7 +59,7 @@ public class MathController {
             throw new UnsupportedMathOperationException("Please set a numeric value!");
         }
 
-        return mathService.division(
+        return mathServices.division(
                 NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
     }
 
@@ -71,7 +71,7 @@ public class MathController {
         if (!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please set a numeric value");
         }
-        return mathService.mean(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
+        return mathServices.mean(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
     }
 
     @GetMapping("/squareRoot/{numberOne}")
